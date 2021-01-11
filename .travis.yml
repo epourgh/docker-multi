@@ -22,3 +22,5 @@ after_success:
   - docker push epourgh/multi-nginx
   - docker push epourgh/multi-server
   - docker push epourgh/multi-worker
+
+  # Added docker access token 
