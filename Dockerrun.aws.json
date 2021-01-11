@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion2": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "epourgh/multi-client",
+            "host-name": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "epourgh/multi-server",
+            "host-name": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "epourgh/multi-worker",
+            "host-name": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "epourgh/multi-nginx",
+            "host-name": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
